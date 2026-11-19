@@ -1,0 +1,46 @@
+--- upstream/starter.py
++++ a08/starter.py
+@@ -304,6 +304,7 @@
+     parser.add_argument('--plugin', type=Path)
+     parser.add_argument('--responses', type=Path)
+     parser.add_argument('--stage', choices=['encoder', 'ranker'], default='ranker')
++    parser.add_argument('--ranker-candidate-source', choices=['cbf', 'popularity'], default='cbf')
+     parser.add_argument('--shots-file', type=Path)
+     parser.add_argument('--on-invalid', choices=['error', 'fallback'], default='error')
+     args = parser.parse_args()
+@@ -311,6 +312,8 @@
+         parser.error('Require max-users >= 0, candidate-count >= 10 and horizon-days > 0')
+     if args.plugin and args.responses:
+         parser.error('Use either --plugin or --responses, not both')
++    if args.ranker_candidate_source == 'popularity' and (not args.responses or args.stage != 'ranker'):
++        parser.error('Popularity candidates require --responses and --stage ranker')
+     assets, profiles, history, truth, end, excluded = load_data(
+         args.data_dir, args.cutoff, args.horizon_days)
+     users = select_users(profiles, history, args.cohort, args.max_users, args.users_file)
+@@ -320,6 +323,13 @@
+     pop = popularity_scores(history, assets)
+     contexts, predictions = contexts_for(users, assets, profiles, history, features, pop,
+                                         args.cutoff, args.candidate_count, args.exclude_seen)
++    if args.ranker_candidate_source == 'popularity':
++        for uid, context in contexts.items():
++            ids = order({i: pop[i] for i in context['eligible_asset_ids']})[:args.candidate_count]
++            context['candidate_assets'] = [
++                {'id': i, 'name': assets[i]['assetName'], 'attributes': features[i],
++                 'metadata_timestamp': assets[i]['timestamp']} for i in ids]
++            assert ids[:10] == predictions[uid]['popularity']
+     events = scan_recent_events(args.data_dir, args.cutoff, assets)
+     recent = recency_rankings(contexts, pop, events)
+     for uid in users:
+@@ -338,6 +348,12 @@
+         name: hashlib.sha256((args.data_dir / name).read_bytes()).hexdigest()
+         for name in ('transactions.csv', 'asset_information.csv',
+                      'customer_information.csv', 'close_prices.csv')}
++    if args.ranker_candidate_source == 'popularity':
++        protocol['ranker_candidate_source'] = 'popularity'
++        candidate_lists = {uid: [a['id'] for a in context['candidate_assets']]
++                           for uid, context in contexts.items()}
++        protocol['ranker_candidates_sha256'] = hashlib.sha256(
++            json.dumps(candidate_lists, sort_keys=True).encode()).hexdigest()
+     digest = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest()
+     protocol['protocol_hash'] = digest
+     args.output_dir.mkdir(parents=True, exist_ok=True)

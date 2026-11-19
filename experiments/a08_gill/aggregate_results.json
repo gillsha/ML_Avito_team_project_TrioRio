@@ -1,0 +1,186 @@
+{
+  "all": {
+    "popularity": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.028590012799467643,
+      "ndcg_at_10_nonempty": 0.25990920726788763
+    },
+    "cbf": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.020100011736078574,
+      "ndcg_at_10_nonempty": 0.18272737941889614
+    },
+    "latest_buy": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.027722649787649066,
+      "ndcg_at_10_nonempty": 0.2520240889786279
+    },
+    "latest_buy_or_sell": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.027107048693904026,
+      "ndcg_at_10_nonempty": 0.2464277153991275
+    },
+    "category": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.022541434545423168,
+      "ndcg_at_10_nonempty": 0.20492213223111969
+    },
+    "original": {
+      "users": 100,
+      "nonempty_truth_users": 11,
+      "ndcg_at_10": 0.03362199354339085,
+      "ndcg_at_10_nonempty": 0.30565448675809864
+    }
+  },
+  "short": {
+    "popularity": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    },
+    "cbf": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    },
+    "latest_buy": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    },
+    "latest_buy_or_sell": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    },
+    "category": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    },
+    "original": {
+      "users": 39,
+      "nonempty_truth_users": 1,
+      "ndcg_at_10": 0.0,
+      "ndcg_at_10_nonempty": 0.0
+    }
+  },
+  "failures": {
+    "popularity": 0,
+    "cbf": 0,
+    "latest_buy": 0,
+    "latest_buy_or_sell": 0,
+    "category": 15,
+    "original": 16
+  },
+  "response_details": {
+    "category": {
+      "raw_model_responses": 100,
+      "valid": 85,
+      "parse_repairs": 11,
+      "fallback_reasons": {
+        "ISIN outside candidate set": 7,
+        "Duplicate ISINs": 8
+      }
+    },
+    "original": {
+      "raw_model_responses": 100,
+      "valid": 84,
+      "parse_repairs": 1,
+      "fallback_reasons": {
+        "Duplicate ISINs": 8,
+        "ISIN outside candidate set": 8
+      }
+    }
+  },
+  "movement_counts": {
+    "truth_pairs": 18,
+    "in_top50": 17,
+    "rank_worsened": 2,
+    "exited_top10": 2,
+    "rank_improved": 4,
+    "entered_top10": 3,
+    "outside_top50": 1
+  },
+  "baseline_wall_seconds": 3.21,
+  "inference_wall_seconds": 1383.04,
+  "inference_joint_timing": {
+    "inference_command_seconds": 1380.3262701659987,
+    "joint_generation_seconds": 1358.531738705904,
+    "prefix_precompute_seconds": 20.14457470801426,
+    "prefix_tokens": {
+      "category": 3812,
+      "original": 3740
+    },
+    "resumed_batches": 0,
+    "users_per_variant": 100
+  },
+  "replay_seconds": {
+    "category": 3.35,
+    "original": 3.12
+  },
+  "eligible_assets": 767,
+  "baseline_protocol_hash": "50efd4aeb415ba6f0c66dd0793a7c2033cdc32a42b86b58eebbca3e81eaf3417",
+  "ranker_protocol_hash": "bca66d36837d98c991815a388b3d65523bda0c46cff3759e402977d998f4f8a0",
+  "candidate_hash": "0b564ac771edefcbc312705f1628dba3c7cd598bf473bbc8ef0f174e72df9308",
+  "model_runtime": {
+    "model_id": "Qwen/Qwen3-1.7B",
+    "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "model_files_sha256": {
+      "config.json": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197",
+      "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "model-00001-of-00002.safetensors": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5",
+      "model-00002-of-00002.safetensors": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9"
+    },
+    "device": "Apple GPU (MLX Metal)",
+    "hardware": "Apple M3, 24 GB",
+    "system": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.11.16",
+    "packages": {
+      "mlx": "0.32.4",
+      "mlx-metal": "0.32.4",
+      "mlx-lm": "0.28.4",
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.2"
+    },
+    "dtype": "bfloat16 (unquantized upstream weights)",
+    "sampler_temperature": 0.0,
+    "thinking": false,
+    "max_new_tokens": 512,
+    "context_limit": 8192,
+    "prefill_cache": "common token prefix, independently for each prompt variant",
+    "eos_token_ids": [
+      151645,
+      151643
+    ],
+    "history_events": 15,
+    "users_per_batch": 4,
+    "pilot_users": 0,
+    "protocol_hash": "bca66d36837d98c991815a388b3d65523bda0c46cff3759e402977d998f4f8a0",
+    "prompts_sha256": "5c601bb5db110d19e257820c4f4b0c265d4a5fa362edb26ae13847f86ea56943",
+    "category_instruction_sha256": "fc086232a21eb92582f1ca76611c40b8d9c2ef1765575412444e74826439f53b"
+  },
+  "data_sha256": {
+    "transactions.csv": "358871fa1311a802799df86e56c3d633513566965b01412d058e0f8fbe6cd54b",
+    "asset_information.csv": "33f9897b14087068fba53a0bc9e24a0031b096bd3ad3e977e534153f29b7a590",
+    "customer_information.csv": "c4ad52ebca90e32bf3df5eb64f362b7a3437b77d978b22627cc46927fe7064af",
+    "close_prices.csv": "6ba1fe8390b31dfb3ab4e3e824910f9e8da4684cb6074cdb82eb6422a323656d"
+  },
+  "candidate_categories": {
+    "Stock": 39,
+    "Bond": 3,
+    "MTF": 8
+  },
+  "upstream_commit": "f6850861ea20a51e1fb018ee4e5f840c2ac759e0"
+}
