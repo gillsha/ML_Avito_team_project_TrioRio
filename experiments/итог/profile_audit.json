@@ -1,0 +1,28 @@
+{
+  "users": 100,
+  "confirmed_observed_riskLevel_users": 93,
+  "riskLevel_Aggressive_users": 13,
+  "customerType_Professional_users": 8,
+  "union_without_double_count": 19,
+  "subgroup_users_with_future_buys": 4,
+  "future_buyer_count_all": 11,
+  "profile_field_status_counts": {
+    "observed": 286,
+    "predicted": 14
+  },
+  "riskLevel_missing_values": 0,
+  "riskLevel_predicted_values": 7,
+  "riskLevel_unconfirmed_values": 0,
+  "riskLevel_late_values_excluded": 23,
+  "users_with_late_profile_rows": 17,
+  "late_profile_rows_excluded": 23,
+  "users_without_pre_cutoff_source_row": 0,
+  "riskLevel_status_counts": {
+    "predicted": 7,
+    "observed": 93
+  },
+  "customerType_status_counts": {
+    "observed": 100
+  },
+  "explanation": "Availability is proven only by a non-placeholder source-row timestamp strictly before cutoff (README defines it as last update). lastQuestionnaireDate alone is not used; snapshots at/after cutoff are excluded."
+}
